@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toko_jo/menu.dart';
+import 'package:toko_jo/screens/menu.dart';
 
-class ShopItem {
-  final String name;
-  final IconData icon;
-
-  ShopItem(this.name, this.icon);
-}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

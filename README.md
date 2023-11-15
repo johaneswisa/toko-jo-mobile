@@ -44,4 +44,50 @@ SnackBar: SnackBar adalah widget yang digunakan untuk menampilkan pesan singkat 
 Pertama-tama saya membuat program flutter baru dengan flutter create dan flutter run, lalu saya merapikan struktur proyek saya dengan memindahkan beberapa baris code dari main.dart ke menu.dart. Lalu saya mengubah tema warna aplikasi dengan colorScheme di main.dart, mengubah sifat widget halaman menu menjadi stateless (dengan mengubah pada bagian ({super.key, required this.title}) menjadi ({Key? key}) : super(key: key);, menghapus final String title; sampai bawah serta tambahkan Widget build, dan hapus fungsi State yang ada dibawah bagian stateless widget). Lalu saya menambahkan teks dan card untuk memperlihatkan barang yang dijual dengan dengan define tipe pada list, dibawah kode MyHomePage({Key? key}) : super(key: key); saya menambahkan barang-barang yang dijual (nama, harga, dan icon barang tersebut), menambahkan code di widget build (tampilan shop dll.) dan membuat widget stateless baru untuk menampilkan card (menyimpan icon dan text, SnackBar on click dll.). <br>
 Sumber: https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-6#tutorial-getting-started-with-flutter
 
+# Tugas 8 PBP
+
+1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!
+Navigator.push(): Metode ini digunakan untuk menambahkan sebuah route baru ke dalam tumpukan (stack) route navigasi. Ketika Navigator.push() dipanggil, layar baru ditambahkan ke atas layar saat ini di dalam stack, sehingga pengguna dapat kembali ke layar sebelumnya dengan tombol "back" atau fungsi serupa. Navigator.pushReplacement(): Metode ini digunakan untuk menambahkan route baru ke dalam stack dan secara otomatis menghapus layar sebelumnya dari stack. Hal ini berarti bahwa ketika menggunakan Navigator.pushReplacement(), layar sebelumnya tidak dapat diakses lagi dari layar yang baru ditambahkan ke dalam stack. Contoh penggunaan keduanya: Navigator.push() untuk memunculkan form untuk mensubmit data diri kemudian bisa kembali ke layar utama, sedangkan Navigator.pushReplacement() untuk menggantikan halaman setelah register dengan halaman utama, user tidak kembali ke register page. 
+
+2. Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!
+Container<br>
+Konteks Penggunaan: Container adalah widget yang serbaguna dan dapat digunakan untuk menyesuaikan tata letak, dekorasi, padding, margin, dan transformasi dari child widget di dalamnya. Ini memungkinkan untuk membuat UI yang sangat disesuaikan dan fleksibel.
+
+Column<br>
+Konteks Penggunaan: Column adalah layout widget yang mengatur child widget dalam satu kolom vertikal. Cocok digunakan saat ingin menyusun widget secara vertikal seperti daftar, form, atau komponen lainnya.
+
+Row<br>
+Konteks Penggunaan: Row adalah layout widget yang mengatur child widget dalam satu baris horizontal. Sangat berguna untuk menyusun widget secara horizontal seperti tombol navigasi, ikon, atau elemen UI yang terletak berdampingan.
+
+Stack<br>
+Konteks Penggunaan: Stack adalah layout widget yang memungkinkan child widget untuk tumpang tindih (overlap). Widget diatur relatif terhadap satu sama lain dan berguna saat ingin menempatkan widget di atas atau di bawah widget lain secara bebas.
+
+ListView<br>
+Konteks Penggunaan: ListView adalah layout widget yang digunakan ketika ingin menampilkan daftar item yang dapat di-scroll. Berguna untuk membuat daftar yang panjang, seperti daftar pesan, daftar kontak, atau konten dengan banyak item.
+
+GridView<br>
+Konteks Penggunaan: GridView adalah layout widget yang digunakan untuk menampilkan daftar item dalam bentuk grid (kotak-kotak). Cocok digunakan untuk menampilkan koleksi item dalam grid, seperti galeri foto atau tata letak komponen yang berulang.
+
+Wrap<br>
+Konteks Penggunaan: Wrap adalah layout widget yang mengatur child widget dalam baris-baris horizontal atau kolom-kolom vertikal, memungkinkan child widget untuk melanjutkan ke baris/kolom berikutnya ketika mencapai batas lebar/tinggi yang ditentukan.
+
+Expanded & Flexible<br>
+Konteks Penggunaan: Expanded dan Flexible digunakan dalam Row, Column, atau Flex widget untuk memberikan child widget ruang yang fleksibel dalam pengaturan layout. Expanded mengisi ruang yang tersisa, sementara Flexible memberikan properti untuk mengatur fleksibilitas widget.
+
+3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!
+
+Elemen input yang digunakan: TextFormField; TextFormField adalah widget di Flutter yang digunakan untuk membuat sebuah input field (kotak input) yang memungkinkan pengguna untuk memasukkan teks atau data lainnya. Digunakan untuk memungkinkan pengguna memasukkan data dan validasi.
+
+4. Bagaimana penerapan clean architecture pada aplikasi Flutter?
+
+Clean Architecture pada aplikasi Flutter mengikuti prinsip-prinsip desain arsitektur perangkat lunak yang membagi aplikasi menjadi beberapa lapisan dengan batasan-batasan tertentu. Clean Architecture memisahkan logika bisnis dari kode-kode infrastruktur, sehingga memudahkan pengujian, pemeliharaan, dan pengembangan aplikasi. penerapan Clean Architecture dapat dilakukan dengan mengorganisir kode ke dalam beberapa lapisan utama:
+Domain Layer, deskripsi: Ini adalah lapisan teratas yang berisi logika bisnis, aturan, entitas, dan objek nilai dari aplikasi.
+Repository Layer, deskripsi: Lapisan ini berfungsi sebagai penghubung antara domain layer dan lapisan data.
+Data Source Layer, deskripsi: Berisi implementasi spesifik terhadap sumber data eksternal seperti API services, database, local storage, dll.
+Presentation Layer, deskripsi: Lapisan ini berfungsi untuk menangani tampilan dan interaksi pengguna.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial)
+
+Saya membuat class leftDrawer pada left_drawer.dart yang memiliki button untuk ke main page, dan tambah item yang ditambahkan fungsi navigator.push() ketika tombol ditekan, lalu leftDrawer tersebut dipasang ke menu dan halaman form untuk navigasi. Setelah itu, saya membuat file shoplist_form.dart yang berisi class stateful yang menerima input dari user dengan menggunakan TextFormField yang akan dilakukan validasi input ketika tombol save ditekan,  Setelah itu saya melakukan refactoring dengan memindahkan file-file ke folder screens dan widgets.
+
 
