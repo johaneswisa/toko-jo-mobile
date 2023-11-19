@@ -67,7 +67,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                 ),
                 onChanged: (String? value) {
                   setState(() {
-                    _price = int.parse(value!);
+                    _amount = int.parse(value!);
                   });
                 },
                 validator: (String? value) {
