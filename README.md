@@ -90,4 +90,35 @@ Presentation Layer, deskripsi: Lapisan ini berfungsi untuk menangani tampilan da
 
 Saya membuat class leftDrawer pada left_drawer.dart yang memiliki button untuk ke main page, dan tambah item yang ditambahkan fungsi navigator.push() ketika tombol ditekan, lalu leftDrawer tersebut dipasang ke menu dan halaman form untuk navigasi. Setelah itu, saya membuat file shoplist_form.dart yang berisi class stateful yang menerima input dari user dengan menggunakan TextFormField yang akan dilakukan validasi input ketika tombol save ditekan,  Setelah itu saya melakukan refactoring dengan memindahkan file-file ke folder screens dan widgets.
 
+# Tugas 9 PBP
+1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?<br>
+2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.<br>
+3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.<br>
+4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.<br>
+5. Sebutkan seluruh widget yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.<br>
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).<br>
+
+Jawaban:
+1. Ya, kita bisa memasukkan data-data JSON ke dalam map atau list. Tetapi kita kehilangan kejelasan dan tipe yang didefinisikan dengan baik. Membutuhkan perhatian ekstra untuk mengelola dan memproses data.<br>
+
+2. Objek http.Cookie dalam Flutter digunakan untuk merepresentasikan atau memanipulasi cookie HTTP. Cookie ini dapat digunakan dalam permintaan HTTP untuk mengelola informasi otentikasi, sesi, atau data lainnya yang dapat disimpan pada sisi klien.
+
+Adapun alasan mengapa instance http.Cookie atau objek serupa perlu dibagikan ke semua komponen di aplikasi Flutter terkait dengan pengaturan dan manajemen cookie yang terkait dengan permintaan HTTP yang dilakukan dari berbagai komponen.<br>
+
+3. Pengambilan Data JSON: Ambil data dari sumber JSON seperti API atau file lokal dalam format JSON. <br>
+Konversi Data JSON ke Objek Dart: Gunakan fungsi jsonDecode() dari paket dart:convert untuk mengubah string JSON menjadi objek Dart seperti Map atau List.<br>
+Gunakan Data dalam Aplikasi Flutter: Gunakan objek Dart yang dihasilkan dari data JSON untuk menampilkan informasi di dalam widget Flutter seperti Text, ListView, GridView, atau widget lainnya sesuai kebutuhan. <br>
+
+4.Input Data Akun di Flutter: Pengguna memasukkan informasi login (nama pengguna dan kata sandi) dalam aplikasi Flutter.<br>
+Permintaan Autentikasi ke Django: Aplikasi Flutter mengirimkan permintaan HTTP ke backend Django dengan informasi login.<br>
+Penanganan Permintaan di Django: Django memproses informasi login, menggunakan fungsi autentikasi seperti authenticate() dan login().<br>
+Tanggapan dari Django: Django memberikan respons ke Flutter berdasarkan hasil autentikasi, menyampaikan keberhasilan atau kegagalan login.<br>
+Penanganan Respons di Flutter: Berdasarkan respons Django, Flutter menavigasi pengguna ke menu jika login berhasil atau menampilkan pesan kesalahan jika gagal<br>
+
+5. SizedBox Widget: Memberikan jarak antara widget TextField username dan password<br>
+TextField Widget: Menerima input username dan password untuk autentikasi<br>
+ElevatedButton Widget: Melakukan submission pada autentikasi dan saat melakukan create item dengan django<br>
+
+6. Saya membuat aplikasi authentication pada aplikasi django, lalu menambahkan function berdecorator @csrf_exempt di views.py untuk melakukan login dan logout yang memberikan response JSON, lalu pada app flutter saya membuat halaman login, lalu di app flutter saya membuat sebuah model item yang digunakan untuk fetch data dari web service django. Tombol lihat item saya buat agar memiliki fungsionalitas untuk menampilkan data-data dari response web service django, tombol logout saya beri fungsionalitas untuk melakukan logout dengan menggunakan function  logout yang ada di views.py app authentication (app django). Dependencies yang diperlukan yaitu django-cors-headers, pbp_django_auth, http, provider.
+
 
